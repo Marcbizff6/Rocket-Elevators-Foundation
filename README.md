@@ -1,7 +1,6 @@
 
 # Rocket_Elevators_Controllers
-Week 7 : THE API
-
+Week 9 : THE API
 
 API : Twilio, Slack, Dropbox, Google Maps, DropBox, SendGrid, IBM Watson et ZenDesk.
 
