@@ -27,3 +27,4 @@
 /lib/tasks/dataTranfert.rake
 
 
+sendgrid.env
