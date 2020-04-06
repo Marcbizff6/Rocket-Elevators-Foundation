@@ -2,7 +2,6 @@
 # Rocket_Elevators_Controllers
 Week 7 : THE API
 
-Site is now online at http://rocketelevatorsjm.club/.
 
 API : Twilio, Slack, Dropbox, Google Maps, DropBox, SendGrid, IBM Watson et ZenDesk.
 
@@ -28,7 +27,7 @@ When you are logged as a customer, you can go to the page customer dashboard and
 If you try to have a quotes while being login, you will that some of yours informations are already there.
 
 
-Admin :    jonathanmurray1@msn.com/////123456 or felix@homtail.com///////123456
+<!-- Admin :    jonathanmurray1@msn.com/////123456 or felix@homtail.com///////123456 -->
 
 If you go to the admin page (only avalaible if you are also an employee) , you can see all the informations in the SQL DB. You can also check for some BI information in the the dashboard blazer with the link chart or by using the srolldown button on the normal pages.
 
