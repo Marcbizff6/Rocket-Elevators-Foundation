@@ -127,37 +127,37 @@
 
 <% if user_signed_in? && current_user.is_employee(current_user.email) %> 
   <li>
-                                     <div class="w3-dropdown-hover">
-                                       <button class="w3-button w3-gray">PROFILE</button>
-                                            <div class="w3-dropdown-content w3-bar-block w3-border">
-                                                
-                                                    <%= link_to "Edit profile", edit_user_registration_path, :class => "navbar-link" %><br>
-                                                    <a href = "admin"> Aministration section<br>
-													 <a href = "blazer/dashboards/1-dashboard-query"> Dashboard employee<br>
-                                                    <%= link_to("Logout", destroy_user_session_path, method: :delete) %>     
-                                
-                                                </div>
-                                            </div>
-                                          </div>
-                                    </li>    
+  <div class="w3-dropdown-hover">
+    <button class="w3-button w3-gray">PROFILE</button>
+        <div class="w3-dropdown-content w3-bar-block w3-border">
+            
+          <%= link_to "Edit profile", edit_user_registration_path, :class => "navbar-link" %><br>
+          <a href = "admin"> Aministration section<br>
+          <a href = "blazer/dashboards/1-dashboard-query"> Dashboard employee<br>
+          <%= link_to("Logout", destroy_user_session_path, method: :delete) %>     
+
+            </div>
+        </div>
+      </div>
+</li>    
   </li>
 
 
 <% elsif user_signed_in? %> 
 
   <li>
-                                     <div class="w3-dropdown-hover">
-                                       <button class="w3-button w3-gray">PROFILE</button>
-                                            <div class="w3-dropdown-content w3-bar-block w3-border">
-                                                
-                                                    <%= link_to "Edit profile", edit_user_registration_path, :class => "navbar-link" %><br>
-                                                    <a href = "dashboard.html"> Dashboard<br>
-                                                    <%= link_to("Logout", destroy_user_session_path, method: :delete) %>     
-                                
-                                                </div>
-                                            </div>
-                                          </div>
-                                    </li>    
+    <div class="w3-dropdown-hover">
+      <button class="w3-button w3-gray">PROFILE</button>
+          <div class="w3-dropdown-content w3-bar-block w3-border">
+              
+                  <%= link_to "Edit profile", edit_user_registration_path, :class => "navbar-link" %><br>
+                  <a href = "dashboard.html"> Dashboard<br>
+                  <%= link_to("Logout", destroy_user_session_path, method: :delete) %>     
+
+              </div>
+          </div>
+        </div>
+  </li>
   </li>
 
 
@@ -167,15 +167,15 @@
 <% else %>
   <li>
   <li>
-                                        <div class="w3-dropdown-hover">
-                                            <button class="w3-button w3-gray">SESSION</button>
-                                            <div class="w3-dropdown-content w3-bar-block w3-border">
-                                              <%= link_to "Sign up", new_user_registration_path, :class => "navbar-link" %><br>
-                                              <%= link_to "Login", new_user_session_path, :class => "navbar-link" %><br>
-                                              
-                                            </div>
-                                          </div>
-                                    </li>
+      <div class="w3-dropdown-hover">
+          <button class="w3-button w3-gray">SESSION</button>
+          <div class="w3-dropdown-content w3-bar-block w3-border">
+            <%= link_to "Sign up", new_user_registration_path, :class => "navbar-link" %><br>
+            <%= link_to "Login", new_user_session_path, :class => "navbar-link" %><br>
+            
+          </div>
+        </div>
+  </li>
 
 
   </li>
@@ -473,7 +473,7 @@
 
 
 
-   <!-- Sur branch test'                   %>-->
+   <!-- Sur branch test'                           %>-->
 <div><%= flash[:info] %></div>
 
    
