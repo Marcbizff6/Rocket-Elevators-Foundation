@@ -8,8 +8,8 @@ module SendGridApi
 
     def initialize
       @mail = SendGrid::Mail.new
-      # @mail.from = Email.new(email: "codeBoxx@codeboxx.biz")
-      @mail.from = Email.new(email: "marc_travail@hotmail.com")
+      @mail.from = Email.new(email: "codeBoxx@codeboxx.biz")
+      # @mail.from = Email.new(email: "marc_travail@hotmail.com")
       @sg = SendGrid::API.new(api_key: ENV["valeur_api_sendgrid"], host: "https://api.sendgrid.com")
     end
 
