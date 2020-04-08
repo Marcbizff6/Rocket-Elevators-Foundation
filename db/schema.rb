@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_01_173013) do
+ActiveRecord::Schema.define(version: 2020_04_07_171743) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "address_type"
@@ -185,6 +185,22 @@ ActiveRecord::Schema.define(version: 2020_04_01_173013) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "interventions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "column_id"
+    t.integer "elevator_id"
+    t.date "intervention_start_date"
+    t.date "intervention_end_date"
+    t.string "intervention_result"
+    t.text "intervention_report"
+    t.string "intervention_status"
+    t.bigint "employee_id"
+    t.bigint "building_id"
+    t.bigint "battery_id"
+    t.index ["battery_id"], name: "index_interventions_on_battery_id"
+    t.index ["building_id"], name: "index_interventions_on_building_id"
+    t.index ["employee_id"], name: "index_interventions_on_employee_id"
+  end
+
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "full_name"
     t.string "business_name"
@@ -249,5 +265,8 @@ ActiveRecord::Schema.define(version: 2020_04_01_173013) do
   add_foreign_key "customers", "users"
   add_foreign_key "elevators", "columns"
   add_foreign_key "employees", "users"
+  add_foreign_key "interventions", "batteries"
+  add_foreign_key "interventions", "buildings"
+  add_foreign_key "interventions", "employees"
   add_foreign_key "leads", "customers"
 end

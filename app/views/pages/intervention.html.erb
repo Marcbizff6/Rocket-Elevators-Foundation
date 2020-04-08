@@ -1,0 +1,36 @@
+			<!--  PAGE HEADER -->
+			<section class="page-header page-header-xs dark">
+				<div class="container">
+
+					<h1>intervention</h1>
+
+				</div>
+			</section>
+			<!-- /PAGE HEADER -->
+
+
+			<!-- Parallax -->
+			<section class="parallax parallax-1" style="background-image: url('/assets/residential_revol_slider.jpeg');">
+				<div class="overlay dark-1"><!-- dark overlay [1 to 9 opacity] -->
+        </div>
+        <div class="col-md-6">
+          <%= form_with model: @customer do |form| %>
+            <label> Customer </label>
+            <%= form.select(:customer, Customer.all.collect { |cus| [cus.contact_full_name, cus.id] }, { :include_blank => "Select Customer" }, { class: "form-control" }) %>
+            <label class="building">Building</label>
+            <%= form.select(:building, Building.all.collect { |bui| [bui.id, bui.customer_id] }, { :include_blank => "Select Building" }, { class: "form-control" }) %>
+            <label>Battery</label>
+            <%= form.select(:battery, Battery.all.collect { |bat| [bat.date_service_since, bat.building_id] }, { :include_blank => "Select Battery" }, { class: "form-control" }) %>
+            <label>Column</label>
+            <%= form.select(:column, Column.all.collect { |col| [col.status, col.status] }, { :include_blank => "Select Column" }, { class: "form-control" }) %>
+            <label>Elevator</label>
+            <%= form.select(:elevator, Elevator.all.collect { |elev| [elev.id, elev.status] }, { :include_blank => "Select Elevator" }, { class: "form-control" }) %>
+            <label>Employee</label>
+            <%= form.select(:employee, Employee.all.collect { |emp| [emp.firstName, emp.user_id] }, { :include_blank => "Select Employee" }, { class: "form-control" }) %>
+          <% end %>
+        </div>
+
+<script>
+// document.getElementsByClassName('building')[0].style.visibility = 'hidden'
+</script>
+
