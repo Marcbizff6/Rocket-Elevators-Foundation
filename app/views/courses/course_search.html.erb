@@ -1,0 +1,14 @@
+<div class="row no-gutters wow slideInUp" data-wow-duration="1s">
+  <div class="col-md-12 home-form">
+    <%= form_tag(course_search_path, method: "get", class: "form-inline", remote: true) do %>
+    <%= select_tag "location", options_from_collection_for_select(Location.all, "id", "header"), prompt: "Location", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+    <%= select_tag "course_type", options_from_collection_for_select(Course.all, "id", "course_type"), prompt: "Course Type", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+    <%= select_tag "course", options_from_collection_for_select(Course.all, "id", "title"), prompt: "Course", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+    <%= submit_tag("Search", class: "btn btn-primary") %>
+<% end %>
+  </div>
+</div>
+
+<div class="row" id="course_listing">
+  <%= render partial: "course_list", locals: { courses: @courses } %>
+</div>

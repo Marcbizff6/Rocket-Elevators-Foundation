@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :employees
   devise_for :users
+  resources :interventions
 
   #get "users/sign_out" => 'pages#index'
 
@@ -29,6 +30,14 @@ Rails.application.routes.draw do
 
   get "residential" => "pages#residential"
 
+  get "intervention" => "pages#intervention"
+
+  get "interventions" => "pages#interventions"
+
+  get "interventions" => "interventions#interventions"
+
+  post "interventions" => "interventions#create"
+
   get "submission" => "quotes#submission"
 
   post "submission" => "quotes#create"
@@ -48,4 +57,8 @@ Rails.application.routes.draw do
   get "dashboard" => "pages#dashboard"
 
   resources :geolocations
+
+  get "get_courses_by_location/:location_id", to: "courses#get_courses_by_location"
+
+  get "/course_search" => "courses#course_search"
 end

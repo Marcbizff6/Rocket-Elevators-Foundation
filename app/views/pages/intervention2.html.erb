@@ -1,0 +1,158 @@
+
+
+
+			<!-- Parallax -->
+			<section class="parallax parallax-1" style="background-image: url('/assets/residential_revol_slider.jpeg');">
+        <div class="overlay dark-1"><!-- dark overlay [1 to 9 opacity] -->
+					<h1>intervention</h1>
+        </div>
+        <div class="col-md-6">
+          <%= form_with model: @customer do |form| %>
+            <label> Customer </label>
+            <%= form.select(:customer, Customer.all.collect { |cus| [cus.contact_full_name, cus.id] }, { :include_blank => "Select Customer" }, { class: "form-control" }) %>
+            <label class="building">Building</label>
+            <%= form.select(:building, Building.all.collect { |bui| [bui.id, bui.customer_id] }, { :include_blank => "Select Building" }, { class: "form-control" }) %>
+            <label>Battery</label>
+            <%= form.select(:battery, Battery.all.collect { |bat| [bat.date_service_since, bat.building_id] }, { :include_blank => "Select Battery" }, { class: "form-control" }) %>
+            <label>Column</label>
+            <%= form.select(:column, Column.all.collect { |col| [col.status, col.status] }, { :include_blank => "Select Column" }, { class: "form-control" }) %>
+            <label>Elevator</label>
+            <%= form.select(:elevator, Elevator.all.collect { |elev| [elev.id, elev.status] }, { :include_blank => "Select Elevator" }, { class: "form-control" }) %>
+            <label>Employee</label>
+            <%= form.select(:employee, Employee.all.collect { |emp| [emp.firstName, emp.user_id] }, { :include_blank => "Select Employee" }, { class: "form-control" }) %>
+            <label> Description </label>
+            <textarea class="col-md-12" rows="6"></textarea>
+          <% end %>
+
+            <div class="col-md-12">
+						  <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> SEND INTERVENTION</button>
+						</div>
+        </div>
+
+<%= form_with model: @customer, enctype: "multipart/form-data", method: "post" do |form| %>
+			<!-- CONTACT -->
+			<section id="contact">
+				<div class="container">
+					<div class="row">
+
+						<!-- FORM -->
+						<div class="col-md-8 col-sm-8">
+
+							<h3>Drop us a line or just say <strong><em>Hello!</em></strong></h3>
+
+							<!-- Alert Success -->
+							<div id="alert_success" class="alert alert-success mb-30">
+								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+								<strong>Thank You!</strong> Your message successfully sent!
+							</div><!-- /Alert Success -->
+
+
+							<!-- Alert Failed -->
+							<div id="alert_failed" class="alert alert-danger mb-30">
+								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+								<strong>[SMTP] Error!</strong> Internal server error!
+							</div><!-- /Alert Failed -->
+
+
+							<!-- Alert Mandatory -->
+							<div id="alert_mandatory" class="alert alert-danger mb-30">
+								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+								<strong>Sorry!</strong> You need to complete all mandatory (*) fields!
+							</div><!-- /Alert Mandatory -->
+
+
+							<form action="/index" method="post" >
+								<fieldset>
+									<input type="hidden" name="action" value="contact_send" />
+
+									<div class="row">
+											<div class="col-md-4">
+                      <label> Customer </label>
+                      <%= form.select(:customer, Customer.all.collect { |cus| [cus.contact_full_name, cus.id] }, { :include_blank => "Select Customer" }, { class: "form-control" }) %>
+                      <label class="building">Building</label>
+                      <%= form.select(:building, Building.all.collect { |bui| [bui.id, bui.customer_id] }, { :include_blank => "Select Building" }, { class: "form-control" }) %>
+                      <label>Battery</label>
+                      <%= form.select(:battery, Battery.all.collect { |bat| [bat.date_service_since, bat.building_id] }, { :include_blank => "Select Battery" }, { class: "form-control" }) %>
+                      <label>Column</label>
+                      <%= form.select(:column, Column.all.collect { |col| [col.status, col.status] }, { :include_blank => "Select Column" }, { class: "form-control" }) %>
+                      <label>Elevator</label>
+                      <%= form.select(:elevator, Elevator.all.collect { |elev| [elev.id, elev.status] }, { :include_blank => "Select Elevator" }, { class: "form-control" }) %>
+                      <label>Employee</label>
+                      <%= form.select(:employee, Employee.all.collect { |emp| [emp.firstName, emp.user_id] }, { :include_blank => "Select Employee" }, { class: "form-control" }) %>
+                      <label> Description </label>
+                      <textarea class="col-md-12" rows="6"></textarea>											</div>
+											<div class="col-md-4">
+												<label for="contact:email">E-mail Address *</label>
+												<input required type="email" value="" class="form-control" name="contact_email" id="contact:email">
+											</div>
+											<div class="col-md-4"> 
+												<label for="contact:phone">Phone</label>
+												<!--<input type="number" value="" class="form-control" name="contact[phone]" id="contact:phone"> -->
+												<input type="text"  value = "" class="form-control"  name="contact_phone" id="contact:phone">
+											</div>
+											
+									</div>
+									<div class="row">
+											
+											<div class="col-md-4">
+												<label for="contact_department">Department</label>
+												<select id ="contact_department"  name="contact_department">
+													<option value="">--- Select ---</option>
+													<option value="Commercial">Commercial</option>
+													<option value="Residential">Residential</option>
+													<option value="Corporate">Corporate</option>
+													<option value="Corporate">Hybrid</option>
+												</select>
+											</div>
+											<div class="col-md-8">
+												<label for="contact:business">Business Name *</label>
+												<input required type="text" value="" class="form-control " name="contact_business_name" id="contact:business">
+											</div>
+									</div>
+									<div class="row">
+											
+										<div class="col-md-4">
+											<label for="contact:phone">Project Name *</label>
+											<input required type="text" value="" class="form-control" name="contact_project_name" id="contact:project">
+										</div>
+										<div class="col-md-6">
+											<label for="contact:description">Project Description *</label>
+										<!--	<input required type="text" value="" class="form-control" name="contact[description][required]" id="contact:description"> -->
+										<textarea required maxlength="500" rows="3" class="form-control" name="contact_project_description" id="contact:description"></textarea>
+									</div>
+								</div>
+									<div class="row">
+											<div class="col-md-12">
+												<label for="contact:message">Message *</label>
+												<textarea required maxlength="10000" rows="8" class="form-control" name="contact_message" id="contact:message"></textarea>
+											</div>
+									</div>
+									<div class="row">
+											<div class="col-md-12">
+												<label for="contact:attachment">File Attachment</label>
+
+												<!-- custom file upload -->
+												<input class="custom-file-upload" type="file" name="attached_file" id="contact:attachment" data-btn-text="Select a File" />
+												<small class="text-muted block">Max file size: 10Mb (zip/pdf/jpg/png)</small>
+
+											</div>
+									</div>
+
+								</fieldset>
+
+								<div class="row">
+									<div class="col-md-12">
+										<button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> SEND MESSAGE</button>
+									</div>
+								</div>
+							</form>
+
+						</div>
+						<% end %>
+						<!-- /FORM -->
+
+
+<script>
+// document.getElementsByClassName('building')[0].style.visibility = 'hidden'
+</script>
+

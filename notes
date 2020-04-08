@@ -1,0 +1,6 @@
+For intervention.html.erb:
+
+
+    <% @customers.each do |c|%>
+      <option value="<%= c.id %>"> <%= c.contact_full_name %></option>
+    <% end %>

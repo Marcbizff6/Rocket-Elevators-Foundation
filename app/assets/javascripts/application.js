@@ -24,4 +24,8 @@
 
 //= require contact
 
+//= require jquery
+//= require jquery_ujs
+//= require courses
+//= require_tree .
 

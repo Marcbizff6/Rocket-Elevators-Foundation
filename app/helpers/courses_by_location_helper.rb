@@ -1,0 +1,2 @@
+module CoursesByLocationHelper
+end
