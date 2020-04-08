@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace RestApiFoundation
+namespace RestApi
 {
     public class Program
     {
@@ -24,5 +24,3 @@ namespace RestApiFoundation
                 });
     }
 }
-
-

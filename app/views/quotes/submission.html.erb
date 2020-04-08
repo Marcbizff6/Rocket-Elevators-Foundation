@@ -5,11 +5,11 @@
 <!-- SUBMISSION FORM -->
 	<% if user_signed_in? %>
   <li>
-  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>   
+  <%= link_to("Logout", destroy_user_session_path, method: :delete) %>   
   
 
 
-<%= form_tag "/submission", method: 'post' do %>
+<%= form_tag "/submission", method: "post" do %>
 <div id="formbackground" style="background-image: url('/assets/background_elevator.jpg');">
 	<div class="container  formStyle">
 		<div class="row">
@@ -80,26 +80,26 @@
 		</div>
 		<div classs="row">
 			<div class="col-md-12 d-flex justify-content-center addTo">
-				<%# BUTTON SUBMIT %>
+				<% # BUTTON SUBMIT %>
 				<input class="btn btn-outline-success btn-lg submitBtn submission_form" type="submit" value="Add the the quote list" />
 			</div>
 		</div>
 	</div>
 	<!-- /result inputs -->
 </div>
-<%end%>
+<% end %>
 
 	</li>
 	<% else %>
 	<li>
-	<%= link_to('Login', new_user_session_path) %>  
-	<%= form_tag "/submission", method: 'post' do %>
+	<%= link_to("Login", new_user_session_path) %>  
+	<%= form_tag "/submission", method: "post" do %>
 
 <div id="formbackground" style="background-image: url('/assets/background_elevator.jpg');">
 	<div class="container  formStyle">
 		<div class="row">
 			<input class="basicInfos" name="fullName" 	id="fullName"  type="text" placeholder="Full name*" required></input>
-			<%# <input class="basicInfos" name="lastName" 	id="lastname"  type="text" placeholder="Last name*" required></input> %>
+			<% # <input class="basicInfos" name="lastName" 	id="lastname"  type="text" placeholder="Last name*" required></input> %>
 			<input class="basicInfos" name="companyName" 	id="companyName"  type="text" placeholder="Company name*" required></input>
 			<input class="basicInfos" name="email" 		id="email"  type="email" placeholder="Email adress*" required></input>
 			<input class="basicInfos" name ="phoneNumber" type="text"   placeholder="Phone number*" id="Phone number" required></input>
@@ -164,7 +164,7 @@
 		</div>
 		<div classs="row">
 			<div class="col-md-12 d-flex justify-content-center addTo">
-				<%# BUTTON SUBMIT %>
+				<% # BUTTON SUBMIT %>
 				<input class="btn btn-outline-success btn-lg submitBtn submission_form" type="submit" value="Add the the quote list" /> <br>
 			</div>
 		</div>
@@ -173,7 +173,7 @@
 	<!-- /result inputs -->
 </div>
 
-<%end%>
+<% end %>
   </li>
 <% end %>
 
