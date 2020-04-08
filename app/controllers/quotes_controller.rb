@@ -25,7 +25,7 @@ class QuotesController < ApplicationController
       totalCost: params[:total_cost],
     )
     @client = ZendeskAPI::Client.new do |config|
-      config.url = "https://supportRocket.zendesk.com/api/v2" # e.g. https://mydesk.zendesk.com/api/v2
+      config.url = "https://kienzan2.zendesk.com/api/v2" # e.g. https://mydesk.zendesk.com/api/v2
       # Basic / Token Authentication
       config.username = "link_zelda_triforce@hotmail.com"
       # config.token = "Zendesk_Token"

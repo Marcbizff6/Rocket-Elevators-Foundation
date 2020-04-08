@@ -1,0 +1,180 @@
+
+
+<!--*******************************************************************************************************************************************************************************************************************************************
+	*******************************************************************************************************************************************************************************************************************************************-->
+<!-- SUBMISSION FORM -->
+	<% if user_signed_in? %>
+  <li>
+  <%= link_to("Logout", destroy_user_session_path, method: :delete) %>
+  
+
+
+<%= form_tag "/submission", method: "post" do |a| %>
+<div id="formbackground" style="background-image: url('/assets/background_elevator.jpg');">
+	<div class="container  formStyle">
+		<div class="row">
+		</div>
+		<div class="row">
+			<input class="basicInfos" name="fullName" id="fullName"  type="text" value = <%= current_user.firstName %> placeholder="First name" >
+			<input class="basicInfos" name="companyName" id="companyName"  placeholder="Company name*" required type="text" value = <%= current_user.companyName %> >
+			<input class="basicInfos" name="email" 	id="email"  type="email" value = <%= current_user.email %> placeholder="Email" required >
+			<input class="basicInfos" name ="phoneNumber" type="text" id="phoneNumber"   value = <%= current_user.phoneNumber %> placeholder="Phone number*" required>
+		</div>
+		<div class="row">
+			<div class="col-md-12 d-flex justify-content-center">
+				<!-- department selector--> 
+				<select id="departmentSelector" name ="departmentSelector" onchange="departmentValue(); clearValue()">
+					<option id="default_dpt">Select</option>
+					<option value="residential">Residential</option>
+					<option value="commercial">Commercial</option>
+					<option value="corporate">Corporate</option>
+					<option value="hybrid">Hybrid</option>
+				</select>  <!-- /department selector -->
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 d-flex justify-content-center">
+				<!-- inputs of specification -->
+				<div id="specification">
+					<input class="form_input" name="apartment" 	id="apartment"  type="number"  onchange="refresh(); resetRadio()" min="1" placeholder="Number of apartments">
+					<input class="form_input" name="floor" 		id="floor"      type="number"  onchange="refresh(); resetRadio()" min="1" placeholder="Number of floors">
+					<input class="form_input" name="basement" 	id="basement"   type="number"  onchange="refresh(); resetRadio()" min="1" placeholder="Number of basements">
+					<input class="form_input" name="parking" 	id="parking"    type="number"  onchange="refresh(); resetRadio()" min="1" placeholder="Number of parking spaces">
+					<input class="form_input" name="cage" 		id="cage"       type="number"  onchange="refresh(); resetRadio()" min="1" placeholder="Number of elevator cages">
+					<input class="form_input" name="companie" 	id="companie"   type="number"  onchange="refresh(); resetRadio()" min="1" placeholder="Number of seperate tenant companie">
+					<input class="form_input" name="occupant" 	id="occupant"   type="number"  onchange="refresh(); resetRadio()" min="1" placeholder="Maximum number of occupants per floor">
+					<input class="form_input" name="business" 	id="business"   type="number"  onchange="refresh(); resetRadio()" min="1" placeholder="Number of distinct businesses">
+					<input class="form_input" name="activity" 	id="activity"   type="number"  onchange="refresh(); resetRadio()" min="1" max="24" placeholder="Number of hours of activity"> <!-- Maximum of 24 hours -->
+				</div>
+				<!-- /inputs of specification -->
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 d-flex justify-content-center">
+				<div id="rates">  <!-- /quality radio button -->
+					<input type="radio"  id="s"  class="radioButton" name="quality" onclick="displayValue();" value="7565" />Standard<br/>
+					<input type="radio"  id="p"  class="radioButton" name="quality" onclick="displayValue();" value="12345"/>Premium<br/>
+					<input type="radio"  id="e"  class="radioButton" name="quality" onclick="displayValue();" value="15400"/>Excelium<br/>
+				</div>  <!-- /quality radio button -->
+			</div>
+		</div> <!-- result inputs -->
+		<div class="row">
+			<div class="col-md-4">
+				<p>Number of elevators needed</p>	
+				<input class="resultbox" name="elevator_needed"  id="elevator_needed"></p>
+			</div>
+			<div class="col-md-4">
+				<p>Price per elevator</p>			
+				<input class="resultbox" name="elevator_cost"  id="elevator_cost"></p>
+			</div>
+			<div class="col-md-4">
+				<p>Installation Cost</p>			
+				<input class="resultbox" name="installation_cost" id="installation_cost"></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<p>Total Cost</p>					
+				<input class="resultbox"  name="total_cost"  id="total_cost"/>
+			</div>
+		</div>
+		<div classs="row">
+			<div class="col-md-12 d-flex justify-content-center addTo">
+				<% # BUTTON SUBMIT %>
+				<input class="btn btn-outline-success btn-lg submitBtn submission_form" type="submit" value="Add the the quote list" />
+			</div>
+		</div>
+	</div>
+	<!-- /result inputs -->
+</div>
+<% end %>
+
+	</li>
+	<% else %>
+	<li>
+	<%= link_to("Login", new_user_session_path) %>  
+	<%= form_tag "/submission", method: "post" do %>
+
+<div id="formbackground" style="background-image: url('/assets/background_elevator.jpg');">
+	<div class="container  formStyle">
+		<div class="row">
+			<input class="basicInfos" name="fullName" 	id="fullName"  type="text" placeholder="Full name*" required></input>
+			<% # <input class="basicInfos" name="lastName" 	id="lastname"  type="text" placeholder="Last name*" required></input> %>
+			<input class="basicInfos" name="companyName" 	id="companyName"  type="text" placeholder="Company name*" required></input>
+			<input class="basicInfos" name="email" 		id="email"  type="email" placeholder="Email adress*" required></input>
+			<input class="basicInfos" name ="phoneNumber" type="text"   placeholder="Phone number*" id="Phone number" required></input>
+		</div>
+		<div class="row">
+			<div class="col-md-12 d-flex justify-content-center">
+				<!-- department selector--> 
+				<select id="departmentSelector" name ="departmentSelector" onchange="departmentValue(); clearValue()">
+					<option id="default_dpt">Select</option>
+					<option value="residential">Residential</option>
+					<option value="commercial">Commercial</option>
+					<option value="corporate">Corporate</option>
+					<option value="hybrid">Hybrid</option>
+				</select>  <!-- /department selector -->
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 d-flex justify-content-center">
+				<!-- inputs of specification -->
+				<div id="specification">
+					<input class="form_input" name="apartment" 	id="apartment"  type="number"  onchange="refresh(); resetRadio()" min="1" placeholder="Number of apartments"></input>
+					<input class="form_input" name="floor" 		id="floor"      type="number"  onchange="refresh(); resetRadio()" min="1" placeholder="Number of floors"></input>
+					<input class="form_input" name="basement" 	id="basement"   type="number"  onchange="refresh(); resetRadio()" min="1" placeholder="Number of basements"></input>
+					<input class="form_input" name="parking" 	id="parking"    type="number"  onchange="refresh(); resetRadio()" min="1" placeholder="Number of parking spaces"></input>
+					<input class="form_input" name="cage" 		id="cage"       type="number"  onchange="refresh(); resetRadio()" min="1" placeholder="Number of elevator cages"></input>
+					<input class="form_input" name="companie" 	id="companie"   type="number"  onchange="refresh(); resetRadio()" min="1" placeholder="Number of seperate tenant companie"></input>
+					<input class="form_input" name="occupant" 	id="occupant"   type="number"  onchange="refresh(); resetRadio()" min="1" placeholder="Maximum number of occupants per floor"></input>
+					<input class="form_input" name="business" 	id="business"   type="number"  onchange="refresh(); resetRadio()" min="1" placeholder="Number of distinct businesses">
+					<input class="form_input" name="activity" 	id="activity"   type="number"  onchange="refresh(); resetRadio()" min="1" max="24" placeholder="Number of hours of activity"> <!-- Maximum of 24 hours -->
+				</div>
+				<!-- /inputs of specification -->
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 d-flex justify-content-center">
+				<div id="rates">  <!-- /quality radio button -->
+					<input type="radio"  id="s"  class="radioButton" name="quality" onclick="displayValue();" value="7565" />Standard<br/>
+					<input type="radio"  id="p"  class="radioButton" name="quality" onclick="displayValue();" value="12345"/>Premium<br/>
+					<input type="radio"  id="e"  class="radioButton" name="quality" onclick="displayValue();" value="15400"/>Excelium<br/>
+				</div>  <!-- /quality radio button -->
+			</div>
+		</div> <!-- result inputs -->
+		<div class="row">
+			<div class="col-md-4">
+				<p>Number of elevators needed</p>	
+				<input class="resultbox" name="elevator_needed"  id="elevator_needed"></p>
+			</div>
+			<div class="col-md-4">
+				<p>Price per elevator</p>			
+				<input class="resultbox" name="elevator_cost"  id="elevator_cost"></p>
+			</div>
+			<div class="col-md-4">
+				<p>Installation Cost</p>			
+				<input class="resultbox" name="installation_cost" id="installation_cost"></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<p>Total Cost</p>					
+				<input class="resultbox"  name="total_cost"  id="total_cost"/>
+			</div>
+		</div>
+		<div classs="row">
+			<div class="col-md-12 d-flex justify-content-center addTo">
+				<% # BUTTON SUBMIT %>
+				<input class="btn btn-outline-success btn-lg submitBtn submission_form" type="submit" value="Add the the quote list" /> <br>
+			</div>
+		</div>
+		
+	</div>
+	<!-- /result inputs -->
+</div>
+
+<% end %>
+  </li>
+<% end %>
+
+<!-- SUBMISSION FORM -->

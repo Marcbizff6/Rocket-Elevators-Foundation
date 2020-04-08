@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_07_171743) do
+ActiveRecord::Schema.define(version: 2020_04_08_132824) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "address_type"
@@ -188,17 +188,18 @@ ActiveRecord::Schema.define(version: 2020_04_07_171743) do
   create_table "interventions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "column_id"
     t.integer "elevator_id"
-    t.date "intervention_start_date"
-    t.date "intervention_end_date"
-    t.string "intervention_result"
-    t.text "intervention_report"
-    t.string "intervention_status"
-    t.bigint "employee_id"
+    t.date "start_date"
+    t.date "end_date"
+    t.string "result", default: "incomplete"
+    t.text "report"
+    t.string "status", default: "pending"
+    t.bigint "author"
     t.bigint "building_id"
     t.bigint "battery_id"
+    t.integer "customerID"
+    t.index ["author"], name: "index_interventions_on_author"
     t.index ["battery_id"], name: "index_interventions_on_battery_id"
     t.index ["building_id"], name: "index_interventions_on_building_id"
-    t.index ["employee_id"], name: "index_interventions_on_employee_id"
   end
 
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -267,6 +268,6 @@ ActiveRecord::Schema.define(version: 2020_04_07_171743) do
   add_foreign_key "employees", "users"
   add_foreign_key "interventions", "batteries"
   add_foreign_key "interventions", "buildings"
-  add_foreign_key "interventions", "employees"
+  add_foreign_key "interventions", "employees", column: "author"
   add_foreign_key "leads", "customers"
 end

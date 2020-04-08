@@ -34,6 +34,10 @@ Rails.application.routes.draw do
 
   get "interventions" => "pages#interventions"
 
+  get "interventions" => "interventions#interventions"
+
+  post "interventions" => "interventions#create"
+
   get "submission" => "quotes#submission"
 
   post "submission" => "quotes#create"
