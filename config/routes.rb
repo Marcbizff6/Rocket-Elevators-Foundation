@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :interventions
 
-  #get "users/sign_out" => 'pages#index'
+  get "users/sign_out" => 'pages#index'
+
+  delete "users/sign_out" => 'pages#index'
 
   mount RailsAdmin::Engine => "/admin", as: "rails_admin"
 
@@ -37,6 +39,8 @@ Rails.application.routes.draw do
   get "interventions" => "interventions#interventions"
 
   post "interventions" => "interventions#create"
+
+  post "intervention" => "intervention#create"
 
   get "submission" => "quotes#submission"
 

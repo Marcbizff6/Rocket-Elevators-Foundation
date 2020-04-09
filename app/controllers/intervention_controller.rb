@@ -1,9 +1,17 @@
-class QuotesController < ApplicationController
-  def submission
+class InterventionController < ApplicationController
+  before_action :set_intervention, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_employee!
+  before_action :authorize_admin, only:
+  
+  def index
+    @interventions = Intervention.all
+  end
+
+  def intervention
   end
 
   def create
-    #Quote.create(params)
+    #Intervention.create(params)
     @intervention = Intervention.new
     @intervention = Intervention.create(
       id: params[:id],
@@ -27,11 +35,11 @@ class QuotesController < ApplicationController
       config.token = ENV["Zendesk_Token"]
     end
     ZendeskAPI::Ticket.create!(@client,
-                               :subject => "#{@intervention.id} from #{@intervention.id}",
-                               :description => "Create Ticket",
-                               :comment => { :value => "The contact #{@intervention.id} from company #{@intervention.id} can be reached at email #{@intervention.id} and at phone number #{@intervention.id}. The #{@intervention.id} department has a project that would require contribution from Rocket Elevators." },
-                               :type => "task",
-                               :priority => "urgent")
+      :subject => "#{@intervention.column_id} from #{@intervention.elevator_id}",
+      :description => "Create Ticket",
+      :comment => { :value => "The contact #{@intervention.id} from company #{@intervention.id} can be reached at email #{@intervention.id} and at phone number #{@intervention.id}. The #{@intervention.id} department has a project that would require contribution from Rocket Elevators." },
+      :type => "task",
+      :priority => "urgent")
   end
 
   #ON SEND ->

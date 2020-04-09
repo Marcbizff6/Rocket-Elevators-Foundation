@@ -2,14 +2,11 @@
 
 <!--*******************************************************************************************************************************************************************************************************************************************
 	*******************************************************************************************************************************************************************************************************************************************-->
-<!-- SUBMISSION FORM -->
+<!-- INTERVENTION FORM -->
 	<% if user_signed_in? %>
-  <li>
-  <%= link_to("Logout", destroy_user_session_path, method: :delete) %>   
-  
+  <%= link_to("Logout", destroy_user_session_path, method: :delete) %>
 
-
-<%= form_tag "/submission", method: "post" do %>
+<%= form_tag "/intervention", method: "post" do %>
 <div id="formbackground" style="background-image: url('/assets/background_elevator.jpg');">
 	<div class="container  formStyle">
 		<div class="row">
@@ -69,20 +66,20 @@
 				<input class="resultbox" name="elevator_cost"  id="elevator_cost"></p>
 			</div>
 			<div class="col-md-4">
-				<p>Installation Cost</p>			
+				<p>Installation Cost</p>
 				<input class="resultbox" name="installation_cost" id="installation_cost"></p>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-3">
-				<p>Total Cost</p>					
+				<p>Total Cost</p>
 				<input class="resultbox"  name="total_cost"  id="total_cost"/>
 			</div>
 		</div>
 		<div classs="row">
 			<div class="col-md-12 d-flex justify-content-center addTo">
 				<% # BUTTON SUBMIT %>
-				<input class="btn btn-outline-success btn-lg submitBtn submission_form" type="submit" value="Add the the quote list" />
+				<input class="btn btn-outline-success btn-lg submitBtn intervention_form" type="submit" value="Add the the quote list" />
 			</div>
 		</div>
 	</div>
@@ -94,15 +91,15 @@
 	<% else %>
 	<li>
 	<%= link_to("Login", new_user_session_path) %>  
-	<%= form_tag "/submission", method: "post" do %>
+	<%= form_tag "/intervention", method: "post" do %>
 
 <div id="formbackground" style="background-image: url('/assets/background_elevator.jpg');">
 	<div class="container  formStyle">
 		<div class="row">
-			<input class="basicInfos" name="fullName" 	id="fullName"  type="text" placeholder="Full name*" required></input>
-			<input class="basicInfos" name="companyName" 	id="companyName"  type="text" placeholder="Company name*" required></input>
-			<input class="basicInfos" name="email" 		id="email"  type="email" placeholder="Email adress*" required></input>
-			<input class="basicInfos" name ="phoneNumber" type="text"   placeholder="Phone number*" id="Phone number" required></input>
+			<input class="basicInfos" name="fullName" 	id="fullName"  type="text" placeholder="Full name*" value="MarcTestingName"></input>
+			<input class="basicInfos" name="companyName" 	id="companyName"  type="text" placeholder="Company name*" value="MarcTestingCompany"></input>
+			<input class="basicInfos" name="email" 		id="email"  type="email" placeholder="Email adress*" value="MarcTesting@Email.com"</input>
+			<input class="basicInfos" name ="phoneNumber" type="text"   placeholder="Phone number*" id="Phone number" value="MarcTestingPhone"></input>
         <div class="col-md-6">
           <%= form_with model: @customer do |form| %>
             <label> Customer </label>
@@ -151,7 +148,7 @@
 		<div classs="row">
 			<div class="col-md-12 d-flex justify-content-center addTo">
 				<% # BUTTON SUBMIT %>
-				<input class="btn btn-outline-success btn-lg submitBtn submission_form" type="submit" value="Add the the quote list" /> <br>
+				<input class="btn btn-outline-success btn-lg submitBtn intervention_form" type="submit" value="SUBMIT" /> <br>
 			</div>
 		</div>
 		
@@ -163,12 +160,12 @@
   </li>
 <% end %>
 
-<!-- SUBMISSION FORM -->
+<!-- INTERVENTION FORM -->
 
 <!--*******************************************************************************************************************************************************************************************************************************************
 	*******************************************************************************************************************************************************************************************************************************************-->
 
-<!-- SUBMISSION FORM SCRIPT -->
+<!-- INTERVENTION FORM SCRIPT -->
 <script> 
 
 	</script>
