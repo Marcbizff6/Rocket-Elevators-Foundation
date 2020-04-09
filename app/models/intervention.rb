@@ -1,2 +1,2 @@
-class Intervention < ApplicationRecord
+class Interventions < ApplicationRecord
 end

@@ -1,13 +1,14 @@
-class InterventionController < ApplicationController
-  before_action :set_intervention, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_employee!
-  before_action :authorize_admin, only:
+class InterventionsController < ApplicationController
+  # before_action :set_intervention, only: [:show, :edit, :update, :destroy]
+  # before_action :authenticate_employee!
+  # before_action :authorize_admin, only:
   
   def index
     @interventions = Intervention.all
   end
 
-  def intervention
+  def new
+    @intervention = Intervention.new
   end
 
   def create

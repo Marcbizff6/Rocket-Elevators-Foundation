@@ -1,2 +1,2 @@
-module InterventionHelper
+module InterventionsHelper
 end
