@@ -36,7 +36,7 @@ class InterventionsController < ApplicationController
       config.token = ENV["Zendesk_Token"]
     end
     ZendeskAPI::Ticket.create!(@client,
-      :subject => "#{@intervention.column_id} from #{@intervention.elevator_id}",
+      :subject => "#{@intervention.id} from #{@intervention.building_id}",
       :description => "Create Ticket",
       :comment => { :value => "The contact #{@intervention.id} from company #{@intervention.id} can be reached at email #{@intervention.id} and at phone number #{@intervention.id}. The #{@intervention.id} department has a project that would require contribution from Rocket Elevators." },
       :type => "task",
