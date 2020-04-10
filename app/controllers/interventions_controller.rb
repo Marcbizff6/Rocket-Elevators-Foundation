@@ -25,9 +25,9 @@ def new
 end
 
 def get_building
-  if params[:customer_id].present?
-    puts params[:customer_id].present?
-     @buildings = Customer.find(params[:customer_id]).buildings
+  if params[:customerID].present?
+    puts params[:customerID].present?
+     @buildings = Customer.find(params[:customerID]).buildings
       puts @buildings
   else @buildings = Customer.all
   end

@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     get :get_elevator, on: :collection
     get :get_employee, on: :collection
   end
-get "pages/interventions" => "interventions#index"
 
   get "users/sign_out" => 'pages#index'
 
@@ -45,6 +44,8 @@ get "pages/interventions" => "interventions#index"
   get "intervention" => "interventions#new"
 
   post "intervention" => "interventions#create"
+
+  # get "pages/interventions" => "interventions#index"
 
   get "submission" => "quotes#submission"
 
