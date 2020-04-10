@@ -40,7 +40,7 @@ Rails.application.routes.draw do
 
   # post "interventions" => "interventions#create"
 
-  post "intervention" => "intervention#create"
+  post "intervention" => "interventions#create"
 
   get "submission" => "quotes#submission"
 

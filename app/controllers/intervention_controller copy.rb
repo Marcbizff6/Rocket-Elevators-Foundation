@@ -1,4 +1,4 @@
-class InterventionsController < ApplicationController
+class Interventions99999Controller < ApplicationController
   #before_action :set_intervention, only: [:show, :edit, :update, :destroy]
 
   # GET /interventions

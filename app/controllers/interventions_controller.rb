@@ -8,13 +8,13 @@ class InterventionsController < ApplicationController
   end
 
   def new
-    @intervention = Intervention.new
+    @intervention = Interventions.new
   end
 
   def create
     #Intervention.create(params)
-    @intervention = Intervention.new
-    @intervention = Intervention.create(
+    @intervention = Interventions.new
+    @intervention = Interventions.create(
       id: params[:id],
       column_id: params[:column_id],
       elevator_id: params[:elevator_id],
