@@ -7,8 +7,7 @@ function show_row_2() {
     // console.log(val);
 
     $.ajax({
-      // url: '/interventions/getbuilding?id=',
-      url: '/interventions/api/buildings?id=',
+      url: '/interventions/get_building?id=',
       method: "GET",
       dataType: "json",
       data: { customerID: val },

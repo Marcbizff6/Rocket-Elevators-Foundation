@@ -3,13 +3,44 @@ class InterventionsController < ApplicationController
   # before_action :authenticate_employee!
   # before_action :authorize_admin, only:
   
-  def index
-    @interventions = Interventions.all
-  end
+def index
+  @interventions = Interventions.all
+  @interventions = Interventions.new
+  @customers = Customer.all
+  @buildings = Building.all
+  @batteries = Battery.all
+  @columns = Column.all
+  @elevators = Elevator.all
+  @employees = Employee.all
+end
 
-  def new
-    @interventions = Interventions.new
+def new
+  @interventions = Interventions.new
+  @customers = Customer.all
+  @columns = Column.all
+  @buildings = Building.all
+  @batteries = Battery.all
+  @elevators = Elevator.all
+  @employees = Employee.all
+end
+
+def get_building
+  if params[:customer_id].present?
+    puts params[:customer_id].present?
+     @buildings = Customer.find(params[:customer_id]).buildings
+      puts @buildings
+  else @buildings = Customer.all
   end
+  
+  if request.xhr?
+    respond_to do |format|
+      format.json {
+  render json: {
+    buildings: @buildings
+  }}
+  end
+end
+end
 
   def create
     #Intervention.create(params)

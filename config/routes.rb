@@ -2,6 +2,16 @@ Rails.application.routes.draw do
   devise_for :employees
   devise_for :users
   resources :interventions
+  resources :buildings
+
+  resources :interventions do
+    get :get_building, on: :collection
+    get :get_battery, on: :collection
+    get :get_column, on: :collection
+    get :get_elevator, on: :collection
+    get :get_employee, on: :collection
+  end
+get "pages/interventions" => "interventions#index"
 
   get "users/sign_out" => 'pages#index'
 
