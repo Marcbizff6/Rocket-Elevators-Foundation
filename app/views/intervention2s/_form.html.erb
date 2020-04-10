@@ -1,0 +1,22 @@
+<%= form_with(model: intervention2, local: true) do |form| %>
+  <% if intervention2.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(intervention2.errors.count, "error") %> prohibited this intervention2 from being saved:</h2>
+
+      <ul>
+      <% intervention2.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :column_id %>
+    <%= form.number_field :column_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

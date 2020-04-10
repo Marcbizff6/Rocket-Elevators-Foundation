@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :intervention2s
   devise_for :employees
   devise_for :users
   resources :interventions

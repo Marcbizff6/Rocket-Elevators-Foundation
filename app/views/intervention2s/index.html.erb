@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Intervention2s</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @intervention2s.each do |intervention2| %>
+      <tr>
+        <td><%= intervention2.column_id %></td>
+        <td><%= link_to 'Show', intervention2 %></td>
+        <td><%= link_to 'Edit', edit_intervention2_path(intervention2) %></td>
+        <td><%= link_to 'Destroy', intervention2, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Intervention2', new_intervention2_path %>
