@@ -40,8 +40,8 @@
 				Example Usage:  class="clearfix sticky header-sm transparent b-0"
 			-->
       <!-- MARC-ANDRÉ : Uncomment next line and delete the next one-->
-			<div id="header" class="navbar-toggleable-md sticky header-md clearfix fixed">   %>
-			<% # <div id="header" class="navbar-toggleable-sd sticky header-sd clearfix fixed"> %>
+			<div id="header" class="navbar-toggleable-md sticky header-md clearfix fixed">
+			<%# <div id="header" class="navbar-toggleable-sd sticky header-sd clearfix fixed"> %>
 
 				<!-- TOP NAV -->
 				<header id="topNav">
@@ -53,7 +53,7 @@
 						</button>
 
 						<!-- Logo -->
-						<a class="logo float-left scrollTo" href="#top">
+						<a class="logo float-left scrollTo" href="index">
 							<img src="/assets/header_logo.png" alt="Rocket Elevators Logo" />
 						</a>
 
@@ -136,7 +136,7 @@
           <%= link_to "Edit profile", edit_user_registration_path, :class => "navbar-link" %><br>
           <a href = "admin"> Aministration section<br>
           <a href = "blazer/dashboards/1-dashboard-query"> Dashboard employee<br>
-          <%= link_to("Logout", destroy_user_session_path, method: :delete) %>     
+          <%= link_to("Logout", destroy_user_session_path, method: :delete) %>
 
             </div>
         </div>

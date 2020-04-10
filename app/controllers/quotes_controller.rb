@@ -32,11 +32,11 @@ class QuotesController < ApplicationController
       config.token = ENV["Zendesk_Token"]
     end
     ZendeskAPI::Ticket.create!(@client,
-                               :subject => "#{@quote.firstName} from #{@quote.companyName}",
-                               :description => "Create Ticket",
-                               :comment => { :value => "The contact #{@quote.firstName} from company #{@quote.companyName} can be reached at email #{@quote.email} and at phone number #{@quote.phoneNumber}. The #{@quote.buildingType} department has a project that would require contribution from Rocket Elevators." },
-                               :type => "task",
-                               :priority => "urgent")
+      :subject => "#{@quote.firstName} from #{@quote.companyName}",
+      :description => "Create Ticket",
+      :comment => { :value => "The contact #{@quote.firstName} from company #{@quote.companyName} can be reached at email #{@quote.email} and at phone number #{@quote.phoneNumber}. The #{@quote.buildingType} department has a project that would require contribution from Rocket Elevators." },
+      :type => "task",
+      :priority => "urgent")
   end
 
   #ON SEND ->

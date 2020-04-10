@@ -71,9 +71,9 @@ def function_send_ticket
   end
 
   ZendeskAPI::Ticket.create!(@client,
-                             :subject => "#{@lead.full_name} from #{@lead.business_name}",
-                             :description => "Create Ticket",
-                             :comment => { :value => "The contact #{@lead.full_name} from company #{@lead.business_name} can be reached at email #{@lead.email} and at phone number #{@lead.phone}. #{@lead.department} department has a project named #{@lead.project_name} which would require contribution from Rocket Elevators." },
-                             :type => "question",
-                             :priority => "urgent")
+    :subject => "#{@lead.full_name} from #{@lead.business_name}",
+    :description => "Create Ticket",
+    :comment => { :value => "The contact #{@lead.full_name} from company #{@lead.business_name} can be reached at email #{@lead.email} and at phone number #{@lead.phone}. #{@lead.department} department has a project named #{@lead.project_name} which would require contribution from Rocket Elevators." },
+    :type => "question",
+    :priority => "urgent")
 end
