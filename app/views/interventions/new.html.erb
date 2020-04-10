@@ -104,7 +104,7 @@
           <%= form_with model: @customer do |form| %>
             <label> Customer </label>
             <%= form.select(:customer, Customer.all.collect { |cus| [cus.contact_full_name, cus.id] }, { :include_blank => "Select Customer" }, { class: "form-control" }) %>
-            <label class="building">Building</label>
+            <label>Building</label>
             <%= form.select(:building, Building.all.collect { |bui| [bui.id, bui.customer_id] }, { :include_blank => "Select Building" }, { class: "form-control" }) %>
             <label>Battery</label>
             <%= form.select(:battery, Battery.all.collect { |bat| [bat.date_service_since, bat.building_id] }, { :include_blank => "Select Battery" }, { class: "form-control" }) %>

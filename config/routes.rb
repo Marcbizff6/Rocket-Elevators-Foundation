@@ -32,13 +32,7 @@ Rails.application.routes.draw do
 
   get "residential" => "pages#residential"
 
-  # get "intervention" => "pages#intervention"
-
-  # get "interventions" => "pages#interventions"
-
   get "intervention" => "interventions#new"
-
-  # post "interventions" => "interventions#create"
 
   post "intervention" => "interventions#create"
 
