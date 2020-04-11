@@ -70,7 +70,7 @@ end
 
 
     ZendeskAPI::Ticket.create!(@client,
-      :subject => "#{@interventions.id} from #{@interventions.building_id}",
+      :subject => "#{@interventions.id} from #{@interventions.id}",
       :description => "Create Ticket",
       :comment => { :value => "The contact #{@interventions.id} from company #{@interventions.id} can be reached at email #{@interventions.id} and at phone number #{@interventions.id}. The #{@interventions.id} department has a project that would require contribution from Rocket Elevators." },
       :type => "task",
