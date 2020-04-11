@@ -1,2 +1,1 @@
-Sign in : marc@rocket.com
-Password: 123456
+Sign in : marc@rocket.com Password: 123456
