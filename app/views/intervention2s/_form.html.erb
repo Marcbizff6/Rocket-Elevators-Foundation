@@ -1,0 +1,77 @@
+<%= form_with(model: @intervention, local: true) do |form| %>
+  <% if @intervention.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@intervention.errors.count, "error") %> prohibited this intervention from being saved:</h2>
+
+      <ul>
+      <% @intervention.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <div class="container">
+      <div class="card card-default">
+        <div class="card-heading card-heading-transparent">
+          <h2 class="card-title bold">Intervention Details</h2>
+        </div>
+        <div class="card-block">
+          <div class="row">
+            <div class="col-md-4"><span class="ml-40 pb-0">Customer (required)</span></div>
+            <div class="col-md-4"><span class="ml-40">Building (required)</span></div>
+            <div class="col-md-4"><span class="ml-40">Battery (required)</span></div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <%= collection_select(:intervention, :customer_id, Customer.order(:company_name), :id, :company_name, {prompt: 'Please select'}, {:id=>'cust-select', :style=>'width:250px;'} ) %>
+            </div>
+            <div class="col-md-4">
+              <select id="build-select" style="width:250px;" name="intervention[building_id]">
+                <option>Select a building</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <select id="battery-select" style="width:250px" name="intervention[battery_id]">
+                <option>Select a battery</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4"><span class="ml-70">Column</span></div>
+            <div class="col-md-4"><span class="ml-70">Elevator</span></div>
+            <div class="col-md-4"><span class="ml-70">Employee</span></div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <select id="col-select" style="width:250px;" name="intervention[column_id]">
+                <option>Select a column</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <select id="elevator-select" style="width:250px;" name="intervention[elevator_id]">
+                <option>Select an elevator</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <%= collection_select(:intervention, :employee_id, Employee.order(:last_name), :id, :last_name, {prompt: 'None'}, {:id=>'emp-select', :style=>'width:250px;'} ) %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4"><span class="ml-20">Description (required)</span></div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <textarea id="report" rows="7" cols="100" name="intervention[report]"></textarea>
+            </div>
+          </div>
+          <div class="actions">
+            <%= form.submit %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= javascript_include_tag "plugins/jquery/jquery-3.3.1.min" %>
+  <%= javascript_include_tag "interventions.js" %>
+<% end %>

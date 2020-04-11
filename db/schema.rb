@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_08_132824) do
+ActiveRecord::Schema.define(version: 2020_04_10_202656) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "address_type"
@@ -185,6 +185,28 @@ ActiveRecord::Schema.define(version: 2020_04_08_132824) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "intervention2s", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "author_id"
+    t.bigint "customer_id"
+    t.bigint "building_id"
+    t.bigint "column_id"
+    t.bigint "elevator_id"
+    t.bigint "employee_id"
+    t.datetime "start_datetime"
+    t.datetime "end_datetime"
+    t.string "result"
+    t.string "report"
+    t.string "status"
+    t.bigint "battery_id"
+    t.index ["author_id"], name: "index_intervention2s_on_author_id"
+    t.index ["battery_id"], name: "index_intervention2s_on_battery_id"
+    t.index ["building_id"], name: "index_intervention2s_on_building_id"
+    t.index ["column_id"], name: "index_intervention2s_on_column_id"
+    t.index ["customer_id"], name: "index_intervention2s_on_customer_id"
+    t.index ["elevator_id"], name: "index_intervention2s_on_elevator_id"
+    t.index ["employee_id"], name: "index_intervention2s_on_employee_id"
+  end
+
   create_table "interventions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "column_id"
     t.integer "elevator_id"
@@ -266,6 +288,13 @@ ActiveRecord::Schema.define(version: 2020_04_08_132824) do
   add_foreign_key "customers", "users"
   add_foreign_key "elevators", "columns"
   add_foreign_key "employees", "users"
+  add_foreign_key "intervention2s", "batteries"
+  add_foreign_key "intervention2s", "buildings"
+  add_foreign_key "intervention2s", "columns"
+  add_foreign_key "intervention2s", "customers"
+  add_foreign_key "intervention2s", "elevators"
+  add_foreign_key "intervention2s", "employees"
+  add_foreign_key "intervention2s", "employees", column: "author_id"
   add_foreign_key "interventions", "batteries"
   add_foreign_key "interventions", "buildings"
   add_foreign_key "interventions", "employees", column: "author"

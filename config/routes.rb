@@ -1,7 +1,17 @@
 Rails.application.routes.draw do
+  resources :intervention2s
   devise_for :employees
   devise_for :users
-  resources :interventions
+  # resources :interventions
+  resources :buildings
+
+  resources :interventions do
+    get :get_building, on: :collection
+    get :get_battery, on: :collection
+    get :get_column, on: :collection
+    get :get_elevator, on: :collection
+    get :get_employee, on: :collection
+  end
 
   get "users/sign_out" => 'pages#index'
 
@@ -35,6 +45,10 @@ Rails.application.routes.draw do
   get "intervention" => "interventions#new"
 
   post "intervention" => "interventions#create"
+
+  post "intervention2s" => "intervention2s#create"
+
+  # get "pages/interventions" => "interventions#index"
 
   get "submission" => "quotes#submission"
 

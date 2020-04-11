@@ -3,18 +3,49 @@ class InterventionsController < ApplicationController
   # before_action :authenticate_employee!
   # before_action :authorize_admin, only:
   
-  def index
-    @interventions = Intervention.all
-  end
+def index
+  @interventions = Interventions.all
+  @interventions = Interventions.new
+  @customers = Customer.all
+  @buildings = Building.all
+  @batteries = Battery.all
+  @columns = Column.all
+  @elevators = Elevator.all
+  @employees = Employee.all
+end
 
-  def new
-    @intervention = Interventions.new
+def new
+  @interventions = Interventions.new
+  @customers = Customer.all
+  @columns = Column.all
+  @buildings = Building.all
+  @batteries = Battery.all
+  @elevators = Elevator.all
+  @employees = Employee.all
+end
+
+def get_building
+  if params[:customerID].present?
+    puts params[:customerID].present?
+     @buildings = Customer.find(params[:customerID]).buildings
+      puts @buildings
+  else @buildings = Customer.all
   end
+  
+  if request.xhr?
+    respond_to do |format|
+      format.json {
+  render json: {
+    buildings: @buildings
+  }}
+  end
+end
+end
 
   def create
     #Intervention.create(params)
-    @intervention = Interventions.new
-    @intervention = Interventions.create(
+    @interventions = Interventions.new
+    @interventions = Interventions.create(
       id: params[:id],
       column_id: params[:column_id],
       elevator_id: params[:elevator_id],
@@ -28,6 +59,7 @@ class InterventionsController < ApplicationController
       battery_id: params[:battery_id],
       customerID: params[:customerID],
     )
+
     @client = ZendeskAPI::Client.new do |config|
       config.url = "https://kienzan2.zendesk.com/api/v2" # e.g. https://mydesk.zendesk.com/api/v2
       # Basic / Token Authentication
@@ -35,17 +67,19 @@ class InterventionsController < ApplicationController
       # config.token = "Zendesk_Token"
       config.token = ENV["Zendesk_Token"]
     end
+
+
     ZendeskAPI::Ticket.create!(@client,
-      :subject => "#{@intervention.id} from #{@intervention.building_id}",
+      :subject => "#{@interventions.id} from #{@interventions.building_id}",
       :description => "Create Ticket",
-      :comment => { :value => "The contact #{@intervention.id} from company #{@intervention.id} can be reached at email #{@intervention.id} and at phone number #{@intervention.id}. The #{@intervention.id} department has a project that would require contribution from Rocket Elevators." },
+      :comment => { :value => "The contact #{@interventions.id} from company #{@interventions.id} can be reached at email #{@interventions.id} and at phone number #{@interventions.id}. The #{@interventions.id} department has a project that would require contribution from Rocket Elevators." },
       :type => "task",
       :priority => "urgent")
   end
 
   #ON SEND ->
-  if @intervention.try(:save!)
-    @intervention.ticket_intervention
-    redirect_to "/intervention"
+  if @interventions.try(:save!)
+    @interventions.ticket_interventions
+    redirect_to "/interventions"
   end
 end
