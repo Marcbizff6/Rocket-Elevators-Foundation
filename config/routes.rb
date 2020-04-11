@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :intervention2s
   devise_for :employees
   devise_for :users
-  resources :interventions
+  # resources :interventions
   resources :buildings
 
   resources :interventions do
@@ -45,6 +45,8 @@ Rails.application.routes.draw do
   get "intervention" => "interventions#new"
 
   post "intervention" => "interventions#create"
+
+  post "intervention2s" => "intervention2s#create"
 
   # get "pages/interventions" => "interventions#index"
 
